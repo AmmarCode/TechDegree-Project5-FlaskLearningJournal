@@ -16,20 +16,6 @@ class Post(Model):
         database = DATABASE
         order_by = ("-date",)
 
-    @classmethod
-    def create_post(cls, post_id, title, date, time_spent, what_you_learned, resources):
-        try:
-            cls.create(
-                post_id=post_id,
-                title=title,
-                date=date,
-                time_spent=time_spent,
-                learned=learned,
-                resources=resources
-            )
-        except IntegrityError:
-            raise ValueError("Post already exists")
-
 
 def initialize():
     DATABASE.connect()
