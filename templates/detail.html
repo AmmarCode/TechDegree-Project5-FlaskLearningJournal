@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="entry-list single">
+        <article>
+            {% for post in posts %}
+            <h1>{{ post.title }}</h1>
+            <time datetime="datetime">{{ post.date.strftime('%B %d, %Y') }}</time>
+            <div class="entry">
+                <h3>Time Spent: </h3>
+                <p>{{ post.time_spent }} Minutes</p>
+            </div>
+            <div class="entry">
+                <h3>What You Learned:</h3>
+                <p>{{ post.learned }}</p>
+            </div>
+            <div class="entry">
+                <h3>Resources to Remember:</h3>
+                <ul>
+                    <li><a href="">{{ post.resources }}</a></li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</div>
+<div class="edit">
+    <p><a href="{{ url_for('edit', post_id=post.post_id) }}">Edit Entry</a></p>
+</div>
+{% endfor %}
+{% endblock %}
